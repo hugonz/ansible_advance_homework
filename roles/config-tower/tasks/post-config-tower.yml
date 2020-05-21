@@ -8,7 +8,13 @@
     validate_certs: no
     scm_url: "{{ scm_url }}"
     scm_type: git
+    scm_update_on_launch: true
 
+- name: Remove conflicting lines (noncomments) in key files
+  lineinfile:
+    path: "/root/.ssh/openstack.pem"
+    state: absent
+    regex: '#.*$'
 
 # Use tower module or tower-cli to create Ansible Tower project. Name of the project is specifed in ./vars/main.yml
 
