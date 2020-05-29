@@ -22,7 +22,7 @@
 
 - name: Add floating IP to Servers
   os_floating_ip:
-    name: "{{ item.value.name }}"
+    server: "{{ item.value.name }}"
     network: ext_network
   loop: "{{ osp_servers | dict2items }}"
 
