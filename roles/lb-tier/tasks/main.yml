@@ -3,7 +3,7 @@
 - name: Install HAProxy support packages
   package:
     name: 
-      - httpie
+      #- httpie
       - haproxy
     state: latest
 - name: enable HAProxy
