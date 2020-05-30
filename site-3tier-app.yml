@@ -1,3 +1,7 @@
+  #need tsome host data in advance for load balancer
+- hosts: frontends:apps:appdbs
+  gather_facts: yes 
+
 - hosts: workstation
   gather_facts: true
   roles:
