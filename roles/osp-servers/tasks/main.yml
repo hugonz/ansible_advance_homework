@@ -15,9 +15,9 @@
     network: int_network
     #nics: undefined # not required. A list of networks to which the instance's interface should be attached. Networks may be referenced by net-id/net-name/port-id or port-name.,Also this accepts a string containing a list of (net/port)-(id/name) Eg: nics: "net-id=uuid-1,port-name=myport" Only one of network or nics should be supplied.
     userdata: |
-      #!/bin/sh
+      #!/bin/bash
       mkdir -p /home/cloud-user/.ssh
-      echo {{ openstack_key }} >>   /home/cloud-user/.ssh/autorized_keys
+      echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBTCYfp/LvJHpyMqZBeXoX/jHz/LB4yAeRBMYLf3V/kopcIetQQHYIkgW96LB9CmQABX9heoopsDK8tj5IZgz//dPqfYapm+S4mz8jIOFvIwmUle6iM2KdBvMGqIBKiURVoTwQZZMoWzZEqmaHFrRuNrZCDUJ8B3LmNBqp3UQtnYUuG2Vtg/q94Wqlv7nGiBJ/bT0HhPjrsFGXJs29F354rK3Xp9KeKO9RB2PYNgIJ22KFNOZ3IV67I5bd2uJQXHEuQYqAenHh/cIt1GicOVGHKr9RQOngz4093/tuVfiwhIyKZVWu4Xm3G8x6v9nyg4ifi5XSBNvXBCuXSdivv+yd" >>   /home/cloud-user/.ssh/autorized_keys
       chown cloud-user: /home/cloud-user/.ssh/autorized_keys
       chmod u=rw,go= /home/cloud-user/.ssh/autorized_keys
   loop: "{{ osp_servers | dict2items }}"
