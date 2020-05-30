@@ -1,2 +1,15 @@
 ---
 # tasks file for db-tier
+- name: install postgres
+  yum:
+    name: postgresql-server
+    state: latest
+- name: initialize Postgres
+  command: postgresql-setup initdb
+  args:
+    creates: /var/lib/pgsql/data/
+- name: start postgres
+  service:
+    name: postgresql.service
+    state: started
+    enabled: yes 
