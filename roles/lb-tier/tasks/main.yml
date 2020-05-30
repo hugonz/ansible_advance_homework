@@ -1,8 +1,12 @@
 ---
 # tasks file for lb-tier
-- name: DEbug hostvars
+- name: Debug hostvars
   debug:
-    var:  hostvars[groups['apps'].0].ansible_facts 
+    msg: "{{ hostvars[item] }}"
+  loop: "{{ groups['apps'] }}"
+
+- name: fail after debug
+  fail: 
 
 - name: Install HAProxy support packages
   package:
